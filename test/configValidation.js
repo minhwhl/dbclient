@@ -237,7 +237,9 @@ module.exports.tests.validate = function(test, common) {
       dbclient: {
         statFrequency: 0
       },
-      esclient: {},
+      esclient: {
+        nodes: []
+      },
       schema: {
         indexName: 'example_index',
         typeName: 'example_type'
@@ -246,7 +248,7 @@ module.exports.tests.validate = function(test, common) {
 
     t.doesNotThrow(function() {
       proxyquire('../src/configValidation', {
-        'elasticsearch': {
+        '@opensearch/opensearch': {
           Client: function() {
             return { indices: { exists: (indexName, cb) => { cb(false, true); } } };
           }
@@ -264,7 +266,8 @@ module.exports.tests.validate = function(test, common) {
         statFrequency: 1
       },
       esclient: {
-        requestTimeout: 17
+        requestTimeout: 17,
+        nodes: []
       },
       schema: {
         indexName: 'example_index',
@@ -274,7 +277,7 @@ module.exports.tests.validate = function(test, common) {
 
     t.doesNotThrow(() => {
       proxyquire('../src/configValidation', {
-        'elasticsearch': {
+        '@opensearch/opensearch': {
           Client: function() {
             return { indices: { exists: (indexName, cb) => { cb(false, true); } } };
           }
@@ -293,7 +296,8 @@ module.exports.tests.validate = function(test, common) {
         statFrequency: 1
       },
       esclient: {
-        requestTimeout: 17
+        requestTimeout: 17,
+        nodes: []
       },
       schema: {
         indexName: 'example_index',
@@ -311,7 +315,7 @@ module.exports.tests.validate = function(test, common) {
 
     t.throws(() => {
       proxyquire('../src/configValidation', {
-        'elasticsearch': {
+        '@opensearch/opensearch': {
           Client: function() {
             return { indices: { exists: (indexName, cb) => { cb(false, false); } } };
           }

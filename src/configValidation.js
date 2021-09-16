@@ -1,7 +1,7 @@
 'use strict';
 
 const Joi = require('@hapi/joi');
-const elasticsearch = require('elasticsearch');
+const elasticsearch = require('@opensearch/opensearch');
 
 // Schema Configuration
 // dbclient.statFrequency: populated by defaults if not overridden
@@ -25,7 +25,6 @@ module.exports = {
     if (validate.error) {
       throw new Error(validate.error.details[0].message);
     }
-
     // now verify that the index exists
     const esclient = new elasticsearch.Client(config.esclient);
 

@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@hapi/joi": "^16.0.0",
+    "@opensearch/opensearch": "git+https://github.com/opensearch-project/opensearch-js.git",
     "elasticsearch": "^16.0.0",
     "pelias-config": "^4.5.0",
     "pelias-logger": "^1.2.1",

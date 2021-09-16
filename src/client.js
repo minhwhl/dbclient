@@ -1,4 +1,4 @@
-const elasticsearch = require('elasticsearch');
+const elasticsearch = require('@opensearch/opensearch');
 const settings = require('pelias-config').generate();
 
 module.exports = function(){
