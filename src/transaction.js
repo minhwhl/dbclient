@@ -33,14 +33,14 @@ function wrapper( client, parent_logger ){
     }
 
     // perform bulk operation
-    client.bulk( { body: payload }, function( err, resp ){
+    client.bulk( { body: payload }, function( err, response={} ){
 
       // major error
       if( err ){
         logger.error( 'esclient error', err );
         batch.status = 500;
       }
-
+      const resp = response.body || null;
       // response does not contain items
       if( !resp || !resp.items ){
         logger.error( 'invalid resp from es bulk index operation' );
